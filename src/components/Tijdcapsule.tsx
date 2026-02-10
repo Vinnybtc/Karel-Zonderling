@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, Sparkles, Clock } from "lucide-react";
+import { Send, Sparkles, Clock, AlertCircle } from "lucide-react";
 import { useState } from "react";
 
 export default function Tijdcapsule() {
@@ -9,16 +9,33 @@ export default function Tijdcapsule() {
   const [wish, setWish] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !wish.trim()) return;
 
     setIsSubmitting(true);
-    // Simulate saving (would connect to Supabase in production)
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setSubmitted(true);
-    setIsSubmitting(false);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/tijdcapsule", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: name.trim(), wish: wish.trim() }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Kon de wens niet opslaan");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Er ging iets mis. Probeer opnieuw.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -118,6 +135,17 @@ export default function Tijdcapsule() {
                   </>
                 )}
               </motion.button>
+
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 text-red-600 font-body text-sm bg-red-50 px-4 py-3 rounded-lg"
+                >
+                  <AlertCircle size={16} className="flex-shrink-0" />
+                  {error}
+                </motion.div>
+              )}
             </form>
           ) : (
             <motion.div

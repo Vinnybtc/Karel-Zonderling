@@ -16,6 +16,7 @@ import {
   Lock,
   LogOut,
   AlertCircle,
+  Inbox,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -218,7 +219,14 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
+            <Link
+              href="/dashboard/wensen"
+              className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white font-heading text-sm px-4 py-2 rounded-full transition-colors tracking-wide"
+            >
+              <Inbox size={16} />
+              Wensen Inbox
+            </Link>
             <Wand2 size={28} className="text-donut-goud" />
             <button
               onClick={() => setPassword(null)}
