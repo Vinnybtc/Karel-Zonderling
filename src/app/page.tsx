@@ -1,0 +1,21 @@
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import CharacterGuide from "@/components/CharacterGuide";
+import SpotifySection from "@/components/SpotifySection";
+import Tijdcapsule from "@/components/Tijdcapsule";
+import Footer from "@/components/Footer";
+
+export default function Home() {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <CharacterGuide />
+        <SpotifySection />
+        <Tijdcapsule />
+      </main>
+      <Footer />
+    </>
+  );
+}
