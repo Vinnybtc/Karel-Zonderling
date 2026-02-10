@@ -13,6 +13,9 @@ import {
   ArrowLeft,
   Sparkles,
   Loader2,
+  Lock,
+  LogOut,
+  AlertCircle,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -34,33 +37,154 @@ Snoezy rende rondjes over de grond, zijn kleine muizenpootjes glibberdend over d
 
 Dylan de Badeend zat in de hoek, zijn zonnebril glinsterde in het licht. "Cool feest, man. Echt cool."`;
 
+// ─── Login Screen ────────────────────────────────────────────────
+function LoginScreen({ onLogin }: { onLogin: (pw: string) => void }) {
+  const [pw, setPw] = useState("");
+  const [error, setError] = useState(false);
+  const [checking, setChecking] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setChecking(true);
+    setError(false);
+
+    // Quick validation call to the API
+    const res = await fetch("/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ script: "test-login-check-only", password: pw }),
+    });
+
+    setChecking(false);
+
+    if (res.status === 401) {
+      setError(true);
+    } else {
+      // 400 = password is correct but script too short, that's fine
+      onLogin(pw);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="bg-white rounded-2xl border-2 border-gray-200 p-8 w-full max-w-md shadow-lg"
+      >
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 bg-karel-paars rounded-full flex items-center justify-center mx-auto mb-4">
+            <Lock size={28} className="text-white" />
+          </div>
+          <h1 className="font-heading text-3xl text-gray-800 tracking-wider">
+            Beheerder Login
+          </h1>
+          <p className="font-body text-gray-500 mt-2">
+            Dit dashboard is alleen voor de beheerder.
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="password" className="font-heading text-lg text-gray-700 block mb-2">
+              Wachtwoord
+            </label>
+            <input
+              id="password"
+              type="password"
+              value={pw}
+              onChange={(e) => { setPw(e.target.value); setError(false); }}
+              placeholder="Voer het beheerderswachtwoord in"
+              className="w-full px-4 py-3 font-body border-2 border-gray-300 rounded-xl focus:border-karel-paars focus:outline-none focus:ring-2 focus:ring-karel-paars/20 transition-all"
+              autoFocus
+              required
+            />
+          </div>
+
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-2 text-red-600 font-body text-sm bg-red-50 px-4 py-2 rounded-lg"
+            >
+              <AlertCircle size={16} />
+              Ongeldig wachtwoord. Probeer opnieuw.
+            </motion.div>
+          )}
+
+          <motion.button
+            type="submit"
+            disabled={!pw || checking}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full bg-karel-paars text-white font-heading text-xl py-3 rounded-xl border-2 border-black flex items-center justify-center gap-2 hover:bg-purple-600 transition-colors disabled:opacity-50 tracking-wider"
+          >
+            {checking ? (
+              <Loader2 size={20} className="animate-spin" />
+            ) : (
+              <>
+                <Lock size={18} />
+                Inloggen
+              </>
+            )}
+          </motion.button>
+        </form>
+
+        <Link
+          href="/"
+          className="flex items-center justify-center gap-2 mt-6 text-gray-400 hover:text-karel-paars transition-colors font-body text-sm"
+        >
+          <ArrowLeft size={14} />
+          Terug naar de website
+        </Link>
+      </motion.div>
+    </div>
+  );
+}
+
+// ─── Main Dashboard ──────────────────────────────────────────────
 export default function Dashboard() {
+  const [password, setPassword] = useState<string | null>(null);
   const [script, setScript] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [generated, setGenerated] = useState<GeneratedContent | null>(null);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  // Not logged in → show login
+  if (!password) {
+    return <LoginScreen onLogin={(pw) => setPassword(pw)} />;
+  }
 
   const handleGenerate = async () => {
     if (!script.trim()) return;
     setIsGenerating(true);
+    setError(null);
+    setGenerated(null);
 
-    // Simulate AI generation (would connect to Claude/OpenAI API in production)
-    await new Promise((resolve) => setTimeout(resolve, 2500));
+    try {
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ script, password }),
+      });
 
-    setGenerated({
-      opvoedHack:
-        "Opvoed-tip: Organiseer een marshmallow-bouwdag! Laat kinderen met marshmallows en cocktailprikkers bouwwerken maken. Dit stimuleert fijne motoriek, creativiteit en samenwerking. Bonus: maak er een wedstrijd van wie het hoogste marshmallow-torentje bouwt! Gebruik de podcast-aflevering als achtergrondmuziek voor extra sfeer.",
-      spotifyTitle:
-        "Het Marshmallow-Feest | De Show van Karel Zonderling S1E7",
-      spotifyDescription:
-        "Tante Loesy organiseert het wildste feest ooit: muren van marshmallows, vloeren van slagroom, en Snoezy die dwars door alles heen glijdt! Luister mee hoe Karel, Colibri en Snoezy het zoetste avontuur beleven. Perfect voor kinderen van 4-8 jaar die van avontuur en humor houden.",
-      coloringPrompt:
-        "Lijntekening in cartoon-stijl van een kleine grijze muis die vrolijk door een muur van marshmallows heen glijdt, met een pratende badeend met zwarte zonnebril die relaxed toekijkt. De achtergrond is een fantastisch feestzaal met muren gemaakt van marshmallows. Stijl: kindvriendelijk, hand-drawn, duidelijke lijnen voor kleurplaat.",
-      socialPost:
-        "Wist je dat een marshmallow-feest organiseren een geweldige manier is om creativiteit te stimuleren? In de nieuwe aflevering van Karel Zonderling ontdekken onze helden een feest met muren van marshmallows! Luister nu op Spotify en laat je kind meeglijden met Snoezy door het zoetste avontuur ooit. #KarelZonderling #Kinderpodcast #Marshmallows #OpvoedTip",
-    });
+      const data = await res.json();
 
-    setIsGenerating(false);
+      if (!res.ok) {
+        if (res.status === 401) {
+          setPassword(null); // session expired
+          return;
+        }
+        throw new Error(data.error || "Onbekende fout");
+      }
+
+      setGenerated(data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Er ging iets mis. Probeer opnieuw.");
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const copyToClipboard = (text: string, field: string) => {
@@ -94,7 +218,16 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
-          <Wand2 size={28} className="text-donut-goud" />
+          <div className="flex items-center gap-3">
+            <Wand2 size={28} className="text-donut-goud" />
+            <button
+              onClick={() => setPassword(null)}
+              className="text-white/60 hover:text-white transition-colors"
+              title="Uitloggen"
+            >
+              <LogOut size={20} />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -149,6 +282,18 @@ export default function Dashboard() {
                   Voorbeeld
                 </button>
               </div>
+
+              {/* Error message */}
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 mt-4 text-red-600 font-body text-sm bg-red-50 px-4 py-3 rounded-lg"
+                >
+                  <AlertCircle size={16} className="flex-shrink-0" />
+                  {error}
+                </motion.div>
+              )}
             </div>
 
             {/* Quick stats */}
@@ -201,7 +346,6 @@ export default function Dashboard() {
                   animate={{ opacity: 1, y: 0 }}
                   className="space-y-4"
                 >
-                  {/* Opvoed-hack */}
                   <OutputCard
                     icon={<Users size={20} className="text-terkwaas" />}
                     title="Opvoed-hack voor Ouders"
@@ -210,8 +354,6 @@ export default function Dashboard() {
                     copiedField={copiedField}
                     onCopy={copyToClipboard}
                   />
-
-                  {/* Spotify Title */}
                   <OutputCard
                     icon={<TrendingUp size={20} className="text-[#1DB954]" />}
                     title="SEO Spotify Titel"
@@ -220,8 +362,6 @@ export default function Dashboard() {
                     copiedField={copiedField}
                     onCopy={copyToClipboard}
                   />
-
-                  {/* Spotify Description */}
                   <OutputCard
                     icon={<FileText size={20} className="text-karel-paars" />}
                     title="Spotify Omschrijving"
@@ -230,8 +370,6 @@ export default function Dashboard() {
                     copiedField={copiedField}
                     onCopy={copyToClipboard}
                   />
-
-                  {/* Coloring prompt */}
                   <OutputCard
                     icon={<Palette size={20} className="text-donut-goud" />}
                     title="AI Kleurplaat Prompt"
@@ -240,8 +378,6 @@ export default function Dashboard() {
                     copiedField={copiedField}
                     onCopy={copyToClipboard}
                   />
-
-                  {/* Social post */}
                   <OutputCard
                     icon={<Sparkles size={20} className="text-super-rood" />}
                     title="Social Media Post"
@@ -275,6 +411,7 @@ export default function Dashboard() {
   );
 }
 
+// ─── Output Card ─────────────────────────────────────────────────
 function OutputCard({
   icon,
   title,
