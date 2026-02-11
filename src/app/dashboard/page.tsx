@@ -17,6 +17,7 @@ import {
   LogOut,
   AlertCircle,
   Inbox,
+  Zap,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -220,6 +221,13 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="flex items-center gap-4">
+            <Link
+              href="/dashboard/autopilot"
+              className="flex items-center gap-2 bg-donut-goud/90 hover:bg-donut-goud text-black font-heading text-sm px-4 py-2 rounded-full transition-colors tracking-wide"
+            >
+              <Zap size={16} />
+              Autopilot
+            </Link>
             <Link
               href="/dashboard/wensen"
               className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white font-heading text-sm px-4 py-2 rounded-full transition-colors tracking-wide"
