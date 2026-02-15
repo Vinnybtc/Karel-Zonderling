@@ -7,6 +7,8 @@ import { Menu, X, Headphones } from "lucide-react";
 const navLinks = [
   { href: "#helden", label: "Onze Helden" },
   { href: "#afleveringen", label: "Afleveringen" },
+  { href: "#kleurplaten", label: "Kleurplaten" },
+  { href: "#quiz", label: "Quiz" },
   { href: "#tijdcapsule", label: "Tijdcapsule" },
 ];
 

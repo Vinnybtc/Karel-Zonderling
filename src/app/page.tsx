@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import CharacterGuide from "@/components/CharacterGuide";
 import SpotifySection from "@/components/SpotifySection";
 import Kleurplaten from "@/components/Kleurplaten";
+import PersonageQuiz from "@/components/PersonageQuiz";
 import Tijdcapsule from "@/components/Tijdcapsule";
 import Footer from "@/components/Footer";
 import FloatingSpotifyButton from "@/components/FloatingSpotifyButton";
@@ -19,6 +20,7 @@ export default function Home() {
         <CharacterGuide />
         <SpotifySection />
         <Kleurplaten />
+        <PersonageQuiz />
         <Tijdcapsule />
       </main>
       <Footer />
