@@ -33,6 +33,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Send push notification via ntfy
+    try {
+      await fetch("https://ntfy.sh/karel-zonderling-wensen", {
+        method: "POST",
+        headers: {
+          "Title": `Nieuw idee van ${safeName}`,
+          "Tags": "bulb,sparkles",
+        },
+        body: safeWish,
+      });
+    } catch {
+      // Don't fail the request if notification fails
+      console.error("Ntfy notification failed");
+    }
+
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json(
