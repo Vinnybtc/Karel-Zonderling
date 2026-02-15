@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 700" width="400" height="700">
+  <style>
+    .outline { fill: none; stroke: #2D2D2D; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .thick { stroke-width: 4; }
+  </style>
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#2D2D2D">Snoezy de Muis</text>
+  <!-- Cape -->
+  <path d="M200,170 L340,230 Q360,360 340,520 L200,490 Z" class="outline thick"/>
+  <!-- Body -->
+  <rect x="135" y="220" width="120" height="170" rx="12" class="outline thick"/>
+  <!-- S on chest -->
+  <text x="195" y="330" text-anchor="middle" font-weight="bold" font-size="60" font-family="Arial" fill="none" stroke="#2D2D2D" stroke-width="3">S</text>
+  <!-- Pants left -->
+  <rect x="135" y="380" width="48" height="130" rx="8" class="outline"/>
+  <!-- Pants right -->
+  <rect x="207" y="380" width="48" height="130" rx="8" class="outline"/>
+  <!-- Shoes -->
+  <ellipse cx="159" cy="515" rx="28" ry="16" class="outline"/>
+  <ellipse cx="231" cy="515" rx="28" ry="16" class="outline"/>
+  <!-- Head - mouse -->
+  <circle cx="195" cy="115" r="70" class="outline thick"/>
+  <!-- Mouse ears - outer -->
+  <circle cx="130" cy="50" r="38" class="outline thick"/>
+  <circle cx="260" cy="50" r="38" class="outline thick"/>
+  <!-- Mouse ears - inner -->
+  <circle cx="130" cy="50" r="24" class="outline"/>
+  <circle cx="260" cy="50" r="24" class="outline"/>
+  <!-- Eyes -->
+  <circle cx="172" cy="105" r="10" class="outline"/>
+  <circle cx="218" cy="105" r="10" class="outline"/>
+  <!-- Pupils -->
+  <circle cx="175" cy="105" r="4" fill="#2D2D2D"/>
+  <circle cx="221" cy="105" r="4" fill="#2D2D2D"/>
+  <!-- Nose -->
+  <circle cx="195" cy="125" r="10" class="outline"/>
+  <!-- Whiskers -->
+  <line x1="140" y1="120" x2="170" y2="125" class="outline" stroke-width="2"/>
+  <line x1="140" y1="132" x2="170" y2="130" class="outline" stroke-width="2"/>
+  <line x1="220" y1="125" x2="250" y2="120" class="outline" stroke-width="2"/>
+  <line x1="220" y1="130" x2="250" y2="132" class="outline" stroke-width="2"/>
+  <!-- Smile -->
+  <path d="M175,142 Q195,160 215,142" class="outline" fill="none"/>
+  <!-- Arms -->
+  <path d="M135,250 L80,290" class="outline" stroke-width="10" fill="none" stroke="#2D2D2D" stroke-linecap="round"/>
+  <path d="M255,250 L310,290" class="outline" stroke-width="10" fill="none" stroke="#2D2D2D" stroke-linecap="round"/>
+  <!-- Tail -->
+  <path d="M220,500 Q280,480 300,440 Q320,400 290,380" class="outline" stroke-width="4" fill="none"/>
+  <!-- Cheese decoration -->
+  <path d="M50,580 L100,580 L75,630 Z" class="outline"/>
+  <circle cx="70" cy="600" r="4" class="outline"/>
+  <circle cx="85" cy="595" r="3" class="outline"/>
+  <path d="M300,580 L350,580 L325,630 Z" class="outline"/>
+  <circle cx="320" cy="600" r="4" class="outline"/>
+  <circle cx="335" cy="595" r="3" class="outline"/>
+</svg>

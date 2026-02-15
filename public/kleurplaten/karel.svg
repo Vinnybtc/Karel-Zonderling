@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 700" width="400" height="700">
+  <style>
+    .outline { fill: none; stroke: #2D2D2D; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .thick { stroke-width: 4; }
+  </style>
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#2D2D2D">Karel Zonderling</text>
+  <!-- Cape -->
+  <path d="M200,160 L360,240 Q400,400 360,580 L200,540 Z" class="outline thick"/>
+  <!-- Body -->
+  <rect x="130" y="220" width="140" height="200" rx="16" class="outline thick"/>
+  <!-- K on chest -->
+  <text x="200" y="345" text-anchor="middle" font-weight="bold" font-size="72" font-family="Arial" fill="none" stroke="#2D2D2D" stroke-width="3">K</text>
+  <!-- Pants left -->
+  <rect x="130" y="410" width="60" height="160" rx="10" class="outline"/>
+  <!-- Pants right -->
+  <rect x="210" y="410" width="60" height="160" rx="10" class="outline"/>
+  <!-- Shoes -->
+  <ellipse cx="160" cy="575" rx="36" ry="20" class="outline"/>
+  <ellipse cx="240" cy="575" rx="36" ry="20" class="outline"/>
+  <!-- Head -->
+  <circle cx="200" cy="125" r="80" class="outline thick"/>
+  <!-- Hair -->
+  <path d="M124,100 Q140,30 200,40 Q260,30 276,100 Q280,70 260,50 Q220,10 180,20 Q140,30 120,80 Z" class="outline"/>
+  <!-- Eyes -->
+  <circle cx="172" cy="118" r="10" class="outline"/>
+  <circle cx="228" cy="118" r="10" class="outline"/>
+  <!-- Pupils -->
+  <circle cx="175" cy="118" r="4" fill="#2D2D2D"/>
+  <circle cx="231" cy="118" r="4" fill="#2D2D2D"/>
+  <!-- Smile -->
+  <path d="M170,152 Q200,180 230,152" class="outline" fill="none"/>
+  <!-- Arms - superhero pose -->
+  <path d="M130,260 L60,220 L50,190" class="outline" stroke-width="14" fill="none" stroke="#2D2D2D" stroke-linecap="round"/>
+  <path d="M270,260 L340,220 L350,190" class="outline" stroke-width="14" fill="none" stroke="#2D2D2D" stroke-linecap="round"/>
+  <!-- Hands -->
+  <circle cx="50" cy="184" r="16" class="outline"/>
+  <circle cx="350" cy="184" r="16" class="outline"/>
+  <!-- Stars decoration -->
+  <polygon points="60,640 65,655 80,655 68,665 73,680 60,672 47,680 52,665 40,655 55,655" class="outline"/>
+  <polygon points="340,640 345,655 360,655 348,665 353,680 340,672 327,680 332,665 320,655 335,655" class="outline"/>
+  <polygon points="200,650 205,665 220,665 208,675 213,690 200,682 187,690 192,675 180,665 195,665" class="outline"/>
+</svg>

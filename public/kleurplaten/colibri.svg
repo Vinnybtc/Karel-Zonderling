@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 700" width="400" height="700">
+  <style>
+    .outline { fill: none; stroke: #2D2D2D; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .thick { stroke-width: 4; }
+  </style>
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#2D2D2D">Alien Colibri</text>
+  <!-- Cape -->
+  <path d="M200,160 L340,220 Q365,340 340,500 L200,470 Z" class="outline thick"/>
+  <!-- Body -->
+  <rect x="130" y="210" width="130" height="180" rx="12" class="outline thick"/>
+  <!-- C on chest -->
+  <text x="195" y="325" text-anchor="middle" font-weight="bold" font-size="65" font-family="Arial" fill="none" stroke="#2D2D2D" stroke-width="3">C</text>
+  <!-- Pants left -->
+  <rect x="130" y="380" width="55" height="140" rx="8" class="outline"/>
+  <!-- Pants right -->
+  <rect x="205" y="380" width="55" height="140" rx="8" class="outline"/>
+  <!-- Shoes -->
+  <ellipse cx="157" cy="525" rx="30" ry="16" class="outline"/>
+  <ellipse cx="233" cy="525" rx="30" ry="16" class="outline"/>
+  <!-- Head - alien -->
+  <circle cx="195" cy="110" r="75" class="outline thick"/>
+  <!-- Big alien eyes -->
+  <ellipse cx="168" cy="105" rx="18" ry="22" class="outline"/>
+  <ellipse cx="222" cy="105" rx="18" ry="22" class="outline"/>
+  <!-- Eye shine -->
+  <circle cx="174" cy="98" r="6" class="outline"/>
+  <circle cx="228" cy="98" r="6" class="outline"/>
+  <!-- Smile -->
+  <path d="M165,140 Q195,165 225,140" class="outline" fill="none"/>
+  <!-- Purple pigtails -->
+  <path d="M130,80 Q85,50 75,90 Q65,125 100,110" class="outline" stroke-width="8" fill="none" stroke="#2D2D2D"/>
+  <path d="M260,80 Q305,50 315,90 Q325,125 290,110" class="outline" stroke-width="8" fill="none" stroke="#2D2D2D"/>
+  <!-- Pigtail bows -->
+  <circle cx="75" cy="85" r="10" class="outline"/>
+  <circle cx="315" cy="85" r="10" class="outline"/>
+  <!-- Arms - hands on hips -->
+  <path d="M130,240 L70,280 L90,340" class="outline" stroke-width="10" fill="none" stroke="#2D2D2D" stroke-linecap="round"/>
+  <path d="M260,240 L320,280 L300,340" class="outline" stroke-width="10" fill="none" stroke="#2D2D2D" stroke-linecap="round"/>
+  <!-- Hearts decoration -->
+  <path d="M60,600 C60,590 50,580 40,590 C30,580 20,590 20,600 C20,615 60,640 60,640 C60,640 100,615 100,600 C100,590 90,580 80,590 C70,580 60,590 60,600 Z" class="outline"/>
+  <path d="M340,600 C340,590 330,580 320,590 C310,580 300,590 300,600 C300,615 340,640 340,640 C340,640 380,615 380,600 C380,590 370,580 360,590 C350,580 340,590 340,600 Z" class="outline"/>
+</svg>
