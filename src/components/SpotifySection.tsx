@@ -8,68 +8,72 @@ interface Episode {
   title: string;
   description: string;
   highlight: string;
+  spotifyUrl: string;
 }
 
 const episodes: Episode[] = [
   {
     number: 1,
-    title: "Het Geheime Hoofdkwartier",
-    description: "Karel ontdekt een geheim onder het donut-cafe. Codewoord: 'Wil je er een koekje bij?'",
-    highlight: "De ontdekking van het HQ",
+    title: "De Donutcode",
+    description: "In het Donut Café lijkt alles rustig, tot de kassajuf plots het geheime codewoord zegt...",
+    highlight: "Het avontuur begint!",
+    spotifyUrl: "https://open.spotify.com/episode/7JPQov5PGujvY0qjW1HEBo",
   },
   {
     number: 2,
-    title: "De Komst van Colibri",
-    description: "Een buitenaards wezen landt in de achtertuin. Ze heeft paarse staartjes en een grote glimlach!",
-    highlight: "Eerste ontmoeting met de alien",
+    title: "De Grote snoepgoed verdwijning bij meneer Willy",
+    description: "Een mysterieus figuur steelt al het snoep uit de winkel van Meneer Willy met een knip van zijn vingers!",
+    highlight: "Wie stal het snoep?",
+    spotifyUrl: "https://open.spotify.com/episode/76rgAmRAnCTP16xM6bzUsg",
   },
   {
     number: 3,
-    title: "Snoezy's Grote Dag",
-    description: "Een kleine grijze muis bewijst dat moed niets met grootte te maken heeft.",
-    highlight: "Snoezy krijgt zijn cape",
+    title: "De Suikersporen en De Pratende Badeend",
+    description: "Het onderzoek naar de snoep-diefstal leidt tot een bijzondere ontdekking: Dylan de badeend kan praten!",
+    highlight: "Dylan kan praten!",
+    spotifyUrl: "https://open.spotify.com/episode/09pPvSzEZkwdrV6M4MZDYA",
   },
   {
     number: 4,
-    title: "Dylan de Badeend",
-    description: "Een pratende badeend met een zonnebril? In dit hoofdkwartier is alles mogelijk!",
-    highlight: "De coolste badeend ooit",
+    title: "De Kaasval",
+    description: "Snoezy trapt in een val van Bobby de Boze in een mechanisch pak. Kan het team hem redden?",
+    highlight: "Snoezy in gevaar!",
+    spotifyUrl: "https://open.spotify.com/episode/5qy0tnR3s4rP4MCjyPuyCl",
   },
   {
     number: 5,
-    title: "Het Verdwenen Snoep",
-    description: "Al het snoep van Meneer Willy is verdwenen! Wie heeft het gestolen?",
-    highlight: "Het mysterie begint",
+    title: "Het plan van Bobby de Boze",
+    description: "Het team ontdekt dat Snoezy vermist is. Een mysterieuze deur leidt naar een dreigende ontdekking...",
+    highlight: "Bobby's grote plan",
+    spotifyUrl: "https://open.spotify.com/episode/61OLdwQRpSy6waCCUxAHDB",
   },
   {
     number: 6,
-    title: "Bobby de Boze",
-    description: "Een mysterieuze schurk maakt het leven zuur. Maar waarom is Bobby eigenlijk zo boos?",
-    highlight: "De antagonist verschijnt",
+    title: "Bobby de Boze\u2026 of Bobby de Verdrietige?",
+    description: "Karel blijft achter bij een kapotte deur. De spanning stijgt en hulp komt eraan!",
+    highlight: "Waarom is Bobby boos?",
+    spotifyUrl: "https://open.spotify.com/episode/3tF4b99seJGf5BmaBm4KVh",
   },
   {
     number: 7,
-    title: "Het Marshmallow-Feest",
-    description: "Tante Loesy organiseert het grootste marshmallow-feest ooit! Muren van terkwaas!",
-    highlight: "Marshmallow-muren!",
+    title: "De Saaiste dag ooit! Of toch niet?",
+    description: "Verveling verandert in een wild avontuur met chocoladefonteinen en pretzels!",
+    highlight: "Chocoladefonteinen!",
+    spotifyUrl: "https://open.spotify.com/episode/3TgxiZM2Xlf11v991Rwbuq",
   },
   {
     number: 8,
-    title: "Boepsie in Bananenpak",
-    description: "De alien-broertjes komen op bezoek. Boepsie draagt een bananenpak. Niemand snapt waarom.",
-    highlight: "Alien familie-reunie",
+    title: "Het grote feest van Bobby de Grappige",
+    description: "'Kom je ook naar mijn feestje?' Mysterieuze posters verschijnen door de hele stad!",
+    highlight: "Bobby's feestje",
+    spotifyUrl: "https://open.spotify.com/episode/6jY12SwDiUynONX9J2RIfG",
   },
   {
     number: 9,
-    title: "Bobby de Grappige",
-    description: "Bobby ontdekt dat lachen veel leuker is dan boos zijn. Een onverwachte transformatie!",
-    highlight: "De grote verandering",
-  },
-  {
-    number: 10,
-    title: "De Tijdcapsule",
-    description: "Het team begraaft een tijdcapsule met de kruimel van de eerste taart. Tot seizoen 2!",
-    highlight: "Het seizoensfinale",
+    title: "Er is er een jarig!",
+    description: "Een verjaardags-zwemfeest voor Alien Colibri met onverwachte cadeaus!",
+    highlight: "Colibri is jarig!",
+    spotifyUrl: "https://open.spotify.com/episode/1qN8julgl3qZ8KERLhIs8V",
   },
 ];
 
@@ -100,7 +104,7 @@ export default function SpotifySection() {
             Seizoen 1
           </h2>
           <p className="font-body text-lg text-gray-600 font-bold mb-6">
-            10 afleveringen vol avontuur, vriendschap en marshmallows!
+            9 afleveringen vol avontuur, vriendschap en marshmallows!
           </p>
           <a
             href="https://open.spotify.com/show/7eL8rBY47fQNSBQ5F9zl3t"
@@ -124,8 +128,13 @@ export default function SpotifySection() {
           viewport={{ once: true }}
         >
           {episodes.map((ep) => (
-            <motion.div
+            <a
               key={ep.number}
+              href={ep.spotifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+            <motion.div
               variants={item}
               whileHover={{ x: 8 }}
               className="comic-panel bg-white p-4 md:p-5 flex items-center gap-4 group cursor-pointer"
@@ -162,6 +171,7 @@ export default function SpotifySection() {
                 <Play size={20} className="text-white ml-0.5" />
               </motion.div>
             </motion.div>
+            </a>
           ))}
         </motion.div>
       </div>
