@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play, Headphones, ExternalLink } from "lucide-react";
+import { Play, Headphones, ExternalLink, Heart } from "lucide-react";
 
 interface Episode {
   number: number;
@@ -77,6 +77,14 @@ const episodes: Episode[] = [
   },
 ];
 
+const bonusEpisode: Episode = {
+  number: 0,
+  title: "Valentijnsspecial",
+  description: "Karel en zijn vrienden vieren Valentijnsdag met een speciaal avontuur!",
+  highlight: "Bonus aflevering!",
+  spotifyUrl: "https://open.spotify.com/episode/1mYAEHUEHtr9JvteAFfpc8?si=McHg_AyjQDWVMVIRoqEs1g",
+};
+
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -116,6 +124,55 @@ export default function SpotifySection() {
             <Headphones size={24} />
             Luister alles op Spotify
             <ExternalLink size={16} />
+          </a>
+        </motion.div>
+
+        {/* Bonus Valentine episode */}
+        <motion.div
+          className="mb-6"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+        >
+          <a
+            href={bonusEpisode.spotifyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <motion.div
+              whileHover={{ x: 8 }}
+              className="comic-panel p-4 md:p-5 flex items-center gap-4 group cursor-pointer"
+              style={{ background: "linear-gradient(135deg, #fff0f3, #ffe0e6)" }}
+            >
+              <div
+                className="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: "#FF0000", border: "3px solid #2D2D2D" }}
+              >
+                <Heart size={24} className="text-white fill-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="font-heading text-xl md:text-2xl text-gray-800 tracking-wide">
+                    {bonusEpisode.title}
+                  </h3>
+                  <span className="text-xs font-bold bg-super-rood text-white px-2 py-0.5 rounded-full">
+                    BONUS
+                  </span>
+                </div>
+                <p className="font-body text-sm text-gray-600 mt-1 hidden md:block">
+                  {bonusEpisode.description}
+                </p>
+                <span className="inline-block mt-1 text-xs font-bold bg-red-200 text-red-700 px-3 py-1 rounded-full">
+                  {bonusEpisode.highlight}
+                </span>
+              </div>
+              <motion.div
+                className="flex-shrink-0 w-10 h-10 bg-[#1DB954] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                whileHover={{ scale: 1.2 }}
+              >
+                <Play size={20} className="text-white ml-0.5" />
+              </motion.div>
+            </motion.div>
           </a>
         </motion.div>
 

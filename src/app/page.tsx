@@ -5,6 +5,7 @@ import SpotifySection from "@/components/SpotifySection";
 import Tijdcapsule from "@/components/Tijdcapsule";
 import Footer from "@/components/Footer";
 import FloatingSpotifyButton from "@/components/FloatingSpotifyButton";
+import ValentinePopup from "@/components/ValentinePopup";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       </main>
       <Footer />
       <FloatingSpotifyButton />
+      <ValentinePopup />
     </>
   );
 }
