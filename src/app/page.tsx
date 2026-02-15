@@ -4,6 +4,7 @@ import CharacterGuide from "@/components/CharacterGuide";
 import SpotifySection from "@/components/SpotifySection";
 import Tijdcapsule from "@/components/Tijdcapsule";
 import Footer from "@/components/Footer";
+import FloatingSpotifyButton from "@/components/FloatingSpotifyButton";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Tijdcapsule />
       </main>
       <Footer />
+      <FloatingSpotifyButton />
     </>
   );
 }
