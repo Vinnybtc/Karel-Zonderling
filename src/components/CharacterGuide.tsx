@@ -157,16 +157,16 @@ export default function CharacterGuide() {
         {/* Character grid */}
         <motion.div
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          key={activeCategory}
           variants={container}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
+          animate="show"
         >
-          {filtered.map((char) => (
+          {filtered.map((char, index) => (
             <motion.div
               key={char.name}
               variants={item}
-              whileHover={{ scale: 1.05, rotate: Math.random() > 0.5 ? 2 : -2 }}
+              whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setFlipped(flipped === char.name ? null : char.name)}
               className="cursor-pointer"
