@@ -169,11 +169,13 @@ export default function Hero() {
           </p>
         </div>
 
-        <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl text-karel-paars drop-shadow-lg tracking-wider">
-          De Show van
-        </h1>
-        <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl text-super-rood drop-shadow-lg tracking-wider mt-2">
-          Karel Zonderling
+        <h1>
+          <span className="font-heading text-5xl md:text-7xl lg:text-8xl text-karel-paars drop-shadow-lg tracking-wider block">
+            De Show van
+          </span>
+          <span className="font-heading text-6xl md:text-8xl lg:text-9xl text-super-rood drop-shadow-lg tracking-wider mt-2 block">
+            Karel Zonderling
+          </span>
         </h1>
         <motion.p
           className="font-body text-xl md:text-2xl mt-4 text-gray-700 font-bold"

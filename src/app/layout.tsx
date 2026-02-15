@@ -15,10 +15,52 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "De Show van Karel Zonderling | Kinderpodcast",
+  metadataBase: new URL("https://karelzonderling.nl"),
+  title: {
+    default: "De Show van Karel Zonderling | Kinderpodcast op Spotify",
+    template: "%s | Karel Zonderling",
+  },
   description:
-    "Welkom in het geheime hoofdkwartier! Luister mee naar de avonturen van Karel, Alien Colibri en Snoezy de muis.",
-  keywords: ["kinderpodcast", "Karel Zonderling", "kinderen", "podcast", "avonturen", "superhelden"],
+    "Luister mee naar de avonturen van Karel, Alien Colibri en Snoezy de muis! Een gratis Nederlandse kinderpodcast op Spotify vol superhelden, marshmallows en pratende badeenden.",
+  keywords: [
+    "kinderpodcast",
+    "Karel Zonderling",
+    "kinderen",
+    "podcast",
+    "avonturen",
+    "superhelden",
+    "Nederlandse kinderpodcast",
+    "gratis kinderpodcast",
+    "podcast voor kinderen",
+    "luisterverhaal kinderen",
+    "Spotify kinderpodcast",
+    "voorleesverhaal",
+  ],
+  authors: [{ name: "De Show van Karel Zonderling" }],
+  creator: "De Show van Karel Zonderling",
+  publisher: "De Show van Karel Zonderling",
+  openGraph: {
+    type: "website",
+    locale: "nl_NL",
+    url: "https://karelzonderling.nl",
+    siteName: "De Show van Karel Zonderling",
+    title: "De Show van Karel Zonderling | Kinderpodcast op Spotify",
+    description:
+      "Luister mee naar de avonturen van Karel, Alien Colibri en Snoezy de muis! Een gratis Nederlandse kinderpodcast vol superhelden, marshmallows en pratende badeenden.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "De Show van Karel Zonderling | Kinderpodcast",
+    description:
+      "Luister mee naar de avonturen van Karel, Alien Colibri en Snoezy de muis! Gratis op Spotify.",
+  },
+  alternates: {
+    canonical: "https://karelzonderling.nl",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

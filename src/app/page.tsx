@@ -6,10 +6,12 @@ import Tijdcapsule from "@/components/Tijdcapsule";
 import Footer from "@/components/Footer";
 import FloatingSpotifyButton from "@/components/FloatingSpotifyButton";
 import ValentinePopup from "@/components/ValentinePopup";
+import JsonLd from "@/components/JsonLd";
 
 export default function Home() {
   return (
     <>
+      <JsonLd />
       <Navbar />
       <main>
         <Hero />
