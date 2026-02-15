@@ -74,9 +74,12 @@ export default function WensenPage() {
             </div>
             <h1 className="font-heading text-2xl text-gray-800 tracking-wider">Wensen Inbox</h1>
           </div>
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-4" action="/dashboard/wensen">
+            <input type="hidden" name="username" autoComplete="username" value="admin" />
             <input
               type="password"
+              name="password"
+              autoComplete="current-password"
               value={pw}
               onChange={(e) => { setPw(e.target.value); setLoginError(false); }}
               placeholder="Beheerderswachtwoord"

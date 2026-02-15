@@ -88,14 +88,17 @@ function LoginScreen({ onLogin }: { onLogin: (pw: string) => void }) {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" action="/dashboard">
+          <input type="hidden" name="username" autoComplete="username" value="admin" />
           <div>
             <label htmlFor="password" className="font-heading text-lg text-gray-700 block mb-2">
               Wachtwoord
             </label>
             <input
               id="password"
+              name="password"
               type="password"
+              autoComplete="current-password"
               value={pw}
               onChange={(e) => { setPw(e.target.value); setError(false); }}
               placeholder="Voer het beheerderswachtwoord in"
