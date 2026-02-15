@@ -103,7 +103,7 @@ export default function SpotifySection() {
             10 afleveringen vol avontuur, vriendschap en marshmallows!
           </p>
           <a
-            href="https://open.spotify.com"
+            href="https://open.spotify.com/show/7eL8rBY47fQNSBQ5F9zl3t"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#1DB954] text-white font-heading text-xl px-8 py-3 rounded-full border-3 border-black hover:scale-105 transition-transform"

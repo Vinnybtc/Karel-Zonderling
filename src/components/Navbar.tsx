@@ -41,7 +41,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://open.spotify.com"
+            href="https://open.spotify.com/show/7eL8rBY47fQNSBQ5F9zl3t"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-[#1DB954] text-white font-heading text-lg px-4 py-2 rounded-full border-2 border-black hover:scale-105 transition-transform"
@@ -82,7 +82,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="https://open.spotify.com"
+                href="https://open.spotify.com/show/7eL8rBY47fQNSBQ5F9zl3t"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-[#1DB954] text-white font-heading text-lg px-4 py-2 rounded-full border-2 border-black"
